@@ -20,7 +20,7 @@
          <div class="bot round-corners">
             <div class="inner">
                <h2>The femiBot 🤖</h2>
-               <i style="font-size: 15px">Bot Tips :<br />
+               <i style="font-size: 15px"><b>Bot Tips</b> :<br />
                   1. train: question # answer # password<br />
                   2. To find a user, just type find:username or find:name</i>
                   <div id="chatarea" style="overflow: auto; height:300px; border:1px solid whitesmoke; border-radius:5px"></div>

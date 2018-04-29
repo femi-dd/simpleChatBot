@@ -1,7 +1,21 @@
 <?php
 
-try {
-   $connection = new PDO("mysql:host=". DB_HOST. ";dbname=". DB_DATABASE , DB_USER, DB_PASSWORD);
-} catch (PDOException $exception) {
-   die("Error connecting to database : ".$exception->getMessage() . DB_DATABASE . ": " . $exception->getMessage());
+class DBConnection {
+
+   private $dsn = "mysql:dbname=chatbot;host=localhost";
+   private $user = "root";
+   private $password = "";
+   private $connection;
+
+   public function getConnection() {
+      try {
+         $this->connection = new PDO($this->dsn, $this->user, $this->password);
+      } catch (PDOException $e) {
+         echo 'Connection failed: ' . $e->getMessage();
+      }
+      return $this->connection ? $this->connection : null;
+   }
+
 }
+
+?>
