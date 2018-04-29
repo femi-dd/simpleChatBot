@@ -16,6 +16,7 @@ To Setup
 NOTE: The custom functions should return definite values to enable the brain.php process them well. (use the return keyword to return values)
 
 <<< Since you know what a return keyword does, why am i even explaining? 🤔
+
 4. To train the bot to return function values, try this training syntax 👇
 
 train: # yourQuestion # yourAnswer(the name of the function) # yourPassword
