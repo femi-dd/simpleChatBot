@@ -15,14 +15,14 @@ function train($question, $answer) {
    }
 }
 
-// function findThisPerson($user) {
-//    $statement = $db_connection->prepare("select * from interns_data where username like :user or name like :user limit 1");
-//    $statement->bindValue(':user', "%$user%");
-//    $statement->execute();
-//    $statement->setFetchMode(PDO::FETCH_ASSOC);
-//    $rows = $statement->fetchObject();
-//    return $rows;
-// }
+function findThisQuestion($question) {
+   $statement = $db_connection->prepare("select * from memory where username like :question order by rand() limit 1");
+   $statement->bindValue(':question', "%$user%");
+   $statement->execute();
+   $statement->setFetchMode(PDO::FETCH_ASSOC);
+   $rows = $statement->fetchObject();
+   return $rows;
+}
 
 function searchRequest($request) {
    global $db_connection;
