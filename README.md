@@ -5,5 +5,4 @@ To train the bot:
 type     train: yourQuestion # yourAnswer # yourPassword
 
 To find an existing question:
-
 type     find: yourQuestion

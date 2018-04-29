@@ -36,30 +36,26 @@ function newElementsForBot(botResponse) {
    chatArea.appendChild(timeElement);
 }
 
-function sendData() {
-   var message = document.getElementById("message").value;
-   if(message.includes('open:')) {
-      url = message.split('open:')
-      window.open('http://' + url[1]);
-      newElementsForUser(message);
-   } else {
-      newElementsForUser(message);
-      $.ajax({
-         url: "http://localhost/Github/simpleChatBot/brain.php",
-         type: "post",
-         data: {new_request: message},
-         dataType: "json",
-         success: function(botResponse) {
-            newElementsForBot(botResponse);
-            $("#message").val("");
-            // document.getElementById("message").focus();
-            $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
-         }
-      });
-   }
-}
-// function checkForm() {
-//    if($("#messages").val() == "") {
-//       alert('no empty stuff');
-//    }
-// }
+$(document).ready(function() {
+   $("#send").click(function() {
+      var message = $("#message").val();
+      if(message.includes('open:')) {
+         url = message.split('open:')
+         window.open('http://' + url[1]);
+         newElementsForUser(message);
+      } else {
+         newElementsForUser(message);
+         $.ajax({
+            url: "http://localhost/Github/simpleChatBot/brain.php",
+            type: "post",
+            data: {new_request: message},
+            dataType: "json",
+            success: function(botResponse) {
+               newElementsForBot(botResponse);
+               $("#message").val("");
+               $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
+            }
+         });
+      }
+   });
+});
