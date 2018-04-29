@@ -17,10 +17,8 @@ function newElementsForBot(botResponse) {
    var chatArea = document.getElementById("chatarea");
    if(botResponse.response.resultType == "find") {
       var messageElement = document.createElement("div");
-      messageElement.innerHTML = "Intern ID => " + botResponse.response.users.intern_id + "\n" +
-      "Intern Name => " + botResponse.response.users.name + "\n" +
-      "Intern Username => " + botResponse.response.users.username + "\n" +
-      "Intern Profile Picture => " + botResponse.response.users.image_filename;
+      messageElement.innerHTML = "Question => " + botResponse.response.question + "\n" +
+      "Answer => " + botResponse.response.answer + "\n";
    } else {
       var messageElement = document.createElement("input");
       messageElement.value = botResponse.response;

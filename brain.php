@@ -16,8 +16,9 @@ function train($question, $answer) {
 }
 
 function findThisQuestion($question) {
-   $statement = $db_connection->prepare("select * from memory where username like :question order by rand() limit 1");
-   $statement->bindValue(':question', "%$user%");
+   global $db_connection;
+   $statement = $db_connection->prepare("select * from memory where question like :question order by rand() limit 1");
+   $statement->bindValue(':question', "%$question%");
    $statement->execute();
    $statement->setFetchMode(PDO::FETCH_ASSOC);
    $rows = $statement->fetchObject();
@@ -91,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" and isset($_POST['new_request'])) {
       } else if (preg_match('/(find:)/', $request)) {
          $ex = explode("find:", $request);
 
-         if (!empty($users = findThisPerson($ex[1]))) {
-            $bot_response['response'] = array('resultType' => 'find', 'users' => $users);
+         if (!empty($result = findThisQuestion($ex[1]))) {
+            $bot_response['response'] = array('resultType' => 'find', 'question' => $result->question, 'answer' => $result->answer);
          } else {
             $bot_response['response'] = "🤖 I couldn't find a similar question";
          }
