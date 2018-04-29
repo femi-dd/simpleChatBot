@@ -64,9 +64,8 @@ function store($request, $response) {
    }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === "post" and isset($_POST['new_request'])) {
+if ($_SERVER['REQUEST_METHOD'] === "POST" and isset($_POST['new_request'])) {
    $bot_response['response'] = [];
-   $user_request = "";
    $bot_response['response'] = "";
    $request = strtolower($_POST['new_request']);
    $user_request = trim($request);
@@ -88,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === "post" and isset($_POST['new_request'])) {
          }
 
       } else if (preg_match("/(aboutbot)/", $user_request) || preg_match("/(aboutbot:)/", $user_request) || preg_match("/(about bot)/", $user_request)) {
-         $bot_response['response'] = "🤖 Version 4.0";
+         $bot_response['response'] = "🤖 Version 1.0";
       } else if (preg_match('/(find:)/', $request)) {
          $ex = explode("find:", $request);
 
