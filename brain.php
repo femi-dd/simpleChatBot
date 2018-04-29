@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" and isset($_POST['new_request'])) {
          if (!empty($users = findThisPerson($ex[1]))) {
             $bot_response['response'] = array('resultType' => 'find', 'users' => $users);
          } else {
-            $bot_response['response'] = "🤖 I couldn't find a user by that username or name";
+            $bot_response['response'] = "🤖 I couldn't find a similar question";
          }
 
       } else {
