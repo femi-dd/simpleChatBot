@@ -1,8 +1,8 @@
 function newElementsForUser(userRequest) {
    var chatArea = document.getElementById("chatarea");
-   var messageElement = document.createElement("input");
+   var messageElement = document.createElement("div");
    messageElement.className = "form-control form-control2 text-right";
-   messageElement.value = userRequest;
+   messageElement.innerHTML = userRequest;
    var id = Date.now();
    messageElement.setAttribute("id", id);
    chatArea.appendChild(messageElement);
@@ -15,13 +15,12 @@ function newElementsForUser(userRequest) {
 
 function newElementsForBot(botResponse) {
    var chatArea = document.getElementById("chatarea");
+   var messageElement = document.createElement("div");
    if(botResponse.response.resultType == "find") {
-      var messageElement = document.createElement("div");
       messageElement.innerHTML = "Question => " + botResponse.response.question + "\n" +
       "Answer => " + botResponse.response.answer + "\n";
    } else {
-      var messageElement = document.createElement("input");
-      messageElement.value = botResponse.response;
+      messageElement.innerHTML = botResponse.response;
    }
    messageElement.className = "form-control form-control2 text-left";
    var id = Date.now();
