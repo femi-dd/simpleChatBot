@@ -1,15 +1,11 @@
 <?php
 
-public function getTime() {
+function getTime() {
    return date("h:i:s a");
 }
 
-public function developerName() {
+function developerName() {
    return "Femi_DD";
 }
 
-
-
-
-
- ?>
+?>
