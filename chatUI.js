@@ -37,20 +37,20 @@ function newElementsForBot(botResponse) {
 $(document).ready(function chargeBot() {
    $("#send").click(function () {
       var message = $("#message").val();
+      newElementsForUser(message);
       if (message == "" || message == null) {
          response = { 'response': 'Please type something' };
-         newElementsForUser(message);
          newElementsForBot(response);
       }else if (message.includes('open:')) {
          url = message.split('open:');
          // newElementsForUser("opening...");
          window.open('http://' + url[1]);
       } else if (message.includes("randomquote:")) {
-         $.getJSON("https://talaikis.com/api/quotes/", function (json) {
+         $.getJSON("https://talaikis.com/api/quotes/random/", function (json) {
             var quote = "";
             var author = "";
-            var numRand = Math.floor((Math.random() * json.length));
-            response = json[numRand]['quote'] + '<br/> Author : ' + json[numRand]['author'];
+            // var numRand = Math.floor((Math.random() * json.length));
+            response = json['quote'] + '<br/> Author : ' + json['author'];
             botResponse = { 'response': response };
             newElementsForBot(botResponse);
          });
@@ -69,6 +69,7 @@ $(document).ready(function chargeBot() {
             }
          });
       }
+      $("#message").val("");
       $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
    });
 });
