@@ -33,26 +33,42 @@ function newElementsForBot(botResponse) {
    chatArea.appendChild(timeElement);
 }
 
-$(document).ready(function() {
-   $("#send").click(function() {
+
+$(document).ready(function chargeBot() {
+   $("#send").click(function () {
       var message = $("#message").val();
-      if(message.includes('open:')) {
-         url = message.split('open:')
+      if (message == "" || message == null) {
+         response = { 'response': 'Please type something' };
+         newElementsForUser(message);
+         newElementsForBot(response);
+      }else if (message.includes('open:')) {
+         url = message.split('open:');
+         // newElementsForUser("opening...");
          window.open('http://' + url[1]);
-         newElementsForUser(message);
+      } else if (message.includes("randomquote:")) {
+         $.getJSON("https://talaikis.com/api/quotes/", function (json) {
+            var quote = "";
+            var author = "";
+            var numRand = Math.floor((Math.random() * json.length));
+            response = json[numRand]['quote'] + '<br/> Author : ' + json[numRand]['author'];
+            botResponse = { 'response': response };
+            newElementsForBot(botResponse);
+         });
+      } else if (message.includes("aboutbot") || message.includes("about bot") || message.includes("aboutbot:")) {
+         response = { 'response': 'Version 4.0' };
+         newElementsForBot(response);
       } else {
-         newElementsForUser(message);
          $.ajax({
             url: "http://localhost/Github/simpleChatBot/brain.php",
-            type: "post",
-            data: {new_request: message},
+            type: "POST",
+            data: { new_request: message },
             dataType: "json",
-            success: function(botResponse) {
+            success: function (botResponse) {
                newElementsForBot(botResponse);
                $("#message").val("");
-               $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
             }
          });
       }
+      $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
    });
 });

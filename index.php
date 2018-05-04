@@ -24,9 +24,9 @@
                   2. To find a question, just type find:question</i>
                   <div id="chatarea" style="overflow: auto; height:300px; border:1px solid whitesmoke; border-radius:5px"></div>
                   <div class="input-group">
-                     <input type="text" class="form-control" id="message" type="text" placeholder="Message" name="newrequest" />
+                     <input type="text" class="form-control" id="message" type="text" placeholder="Message" name="new_request" />
                      <div class="input-group-btn">
-                        <button class="btn btn-success pull-right" id="send" value="newrequest" type="button">Send 💬</button>
+                        <button class="btn btn-success pull-right" id="send" type="button">Send 💬</button>
                      </div>
                   </div>
                </div>
@@ -49,5 +49,11 @@
 
    <!-- Custom  JavaScript. -> Prepared chatUI and sends ajax request to the brain -->
    <script type="text/javascript" src="chatUI.js"></script>
+   <script type="text/javascript">
+   $(document).ready(function() {
+      response = {"response" : "Hello there, I'm femiBot.<br/>Here's a couple of things i can do.<br/> 1. You can ask me anything<br/>2. You can find a friend who's in the dope HNGInternship<br/>3. You open open a URL by typing open:your_url"};
+      newElementsForBot(response);
+   });
+   </script>
 </body>
 </html>
