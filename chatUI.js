@@ -41,19 +41,20 @@ $(document).ready(function chargeBot() {
       if (message == "" || message == null) {
          response = { 'response': 'Please type something' };
          newElementsForBot(response);
+         $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
       }else if (message.includes('open:')) {
          url = message.split('open:');
          // newElementsForUser("opening...");
          window.open('http://' + url[1]);
+         $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
       } else if (message.includes("randomquote:")) {
          $.getJSON("https://talaikis.com/api/quotes/random/", function (json) {
-            var quote = "";
-            var author = "";
             // var numRand = Math.floor((Math.random() * json.length));
             response = json['quote'] + '<br/> Author : ' + json['author'];
             botResponse = { 'response': response };
             newElementsForBot(botResponse);
          });
+         $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
       } else if (message.includes("aboutbot") || message.includes("about bot") || message.includes("aboutbot:")) {
          response = { 'response': 'Version 4.0' };
          newElementsForBot(response);
@@ -66,10 +67,16 @@ $(document).ready(function chargeBot() {
             success: function (botResponse) {
                newElementsForBot(botResponse);
                $("#message").val("");
+               $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
             }
          });
       }
       $("#message").val("");
-      $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
    });
+});
+
+document.body.addEventListener('keyup', function (e) {
+   if (e.keyCode == "13") {
+      document.getElementById("send").click();
+   }
 });
