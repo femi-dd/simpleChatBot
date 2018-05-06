@@ -5,6 +5,7 @@ function newElementsForUser(userRequest) {
    var time = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
    var timeElement = "<p class='timeEl text-right'>" + time + "</p>";
    chatArea.html(chatArea.html() + timeElement);
+   chatArea.scrollTop($("#chatarea")[0].scrollHeight);
 }
 
 function newElementsForBot(botResponse) {
@@ -18,6 +19,7 @@ function newElementsForBot(botResponse) {
    var time = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true , milliseconds: true});
    var timeElement = "<p class='timeEl text-left'>" + time + "</p>";
    chatArea.html(chatArea.html() + timeElement);
+   chatArea.scrollTop($("#chatarea")[0].scrollHeight);
 }
 
 
@@ -28,15 +30,11 @@ $(document).ready(function chargeBot() {
       if (message == "" || message == null) {
          response = { 'response': 'Please type something' };
          newElementsForBot(response);
-         $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
       }else if (message.includes('open:')) {
          url = message.split('open:');
-         // newElementsForUser("opening...");
          window.open('http://' + url[1]);
-         $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
       } else if (message.includes("randomquote:") || message.includes("random quotes:")) {
          $.getJSON("https://talaikis.com/api/quotes/random/", function (json) {
-            // var numRand = Math.floor((Math.random() * json.length));
             response = json['quote'] + '<br/> Author : ' + json['author'];
             botResponse = { 'response': response };
             newElementsForBot(botResponse);
@@ -53,8 +51,6 @@ $(document).ready(function chargeBot() {
             dataType: "json",
             success: function (botResponse) {
                newElementsForBot(botResponse);
-               // $("#message").val("");
-               $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
             }
          });
       }
@@ -64,6 +60,6 @@ $(document).ready(function chargeBot() {
 
 document.body.addEventListener('keyup', function (e) {
    if (e.keyCode == "13") {
-      document.getElementById("send").click();
+      $("#send").click();
    }
 });
