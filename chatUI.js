@@ -1,36 +1,23 @@
 function newElementsForUser(userRequest) {
-   var chatArea = document.getElementById("chatarea");
-   var messageElement = document.createElement("div");
-   messageElement.className = "form-control form-control2 text-right";
-   messageElement.innerHTML = userRequest;
-   var id = Date.now();
-   messageElement.setAttribute("id", id);
-   chatArea.appendChild(messageElement);
-   var timeElement = document.createElement("p");
-   timeElement.className = "timeEl text-right";
+   var chatArea = $("#chatarea");
+   var messageElement = "<div class='form-control form-control2 text-right'>" + userRequest + "</div>";
+   chatArea.html(chatArea.html() + messageElement);
    var time = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
-   timeElement.innerHTML = time
-   chatArea.appendChild(timeElement);
+   var timeElement = "<p class='timeEl text-right'>" + time + "</p>";
+   chatArea.html(chatArea.html() + timeElement);
 }
 
 function newElementsForBot(botResponse) {
-   var chatArea = document.getElementById("chatarea");
-   var messageElement = document.createElement("div");
-   if(botResponse.response.resultType == "find") {
-      messageElement.innerHTML = "Question => " + botResponse.response.question + "<br/>" +
-      "Answer => " + botResponse.response.answer + "\n";
-   } else {
-      messageElement.innerHTML = botResponse.response;
+   var chatArea = $("#chatarea");
+   if (botResponse.response.resultType == "find") {
+      var messageElement = "<div class='form-control form-control2 text-left'>Question => " + botResponse.response.question + "<br/>Answer => " + botResponse.response.answer + "<br/></div>";
+   } else { 
+      var messageElement = "<div class='form-control form-control2 text-left'>" + botResponse.response + "</div>";
    }
-   messageElement.className = "form-control form-control2 text-left";
-   var id = Date.now();
-   messageElement.setAttribute("id", id);
-   chatArea.appendChild(messageElement);
-   var timeElement = document.createElement("p");
-   timeElement.className = "timeEl text-left";
+   chatArea.html(chatArea.html() + messageElement);
    var time = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true , milliseconds: true});
-   timeElement.innerHTML = time;
-   chatArea.appendChild(timeElement);
+   var timeElement = "<p class='timeEl text-left'>" + time + "</p>";
+   chatArea.html(chatArea.html() + timeElement);
 }
 
 
