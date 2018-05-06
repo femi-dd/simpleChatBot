@@ -46,6 +46,8 @@ function searchRequest($request) {
       $functionName = str_replace(')', '', $functionName);
       if (function_exists($functionName)) {
          $response = str_replace($functionName, $functionName(), $response);
+         $response = str_replace('(', '', $response);
+         $response = str_replace(')', '', $response);
       } else {
          $response = "🤖 I'm sorry, The function doesn't exist";
       }

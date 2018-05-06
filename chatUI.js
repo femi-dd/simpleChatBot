@@ -17,7 +17,7 @@ function newElementsForBot(botResponse) {
    var chatArea = document.getElementById("chatarea");
    var messageElement = document.createElement("div");
    if(botResponse.response.resultType == "find") {
-      messageElement.innerHTML = "Question => " + botResponse.response.question + "\n" +
+      messageElement.innerHTML = "Question => " + botResponse.response.question + "<br/>" +
       "Answer => " + botResponse.response.answer + "\n";
    } else {
       messageElement.innerHTML = botResponse.response;
@@ -47,7 +47,7 @@ $(document).ready(function chargeBot() {
          // newElementsForUser("opening...");
          window.open('http://' + url[1]);
          $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
-      } else if (message.includes("randomquote:")) {
+      } else if (message.includes("randomquote:") || message.includes("random quotes:")) {
          $.getJSON("https://talaikis.com/api/quotes/random/", function (json) {
             // var numRand = Math.floor((Math.random() * json.length));
             response = json['quote'] + '<br/> Author : ' + json['author'];
@@ -66,7 +66,7 @@ $(document).ready(function chargeBot() {
             dataType: "json",
             success: function (botResponse) {
                newElementsForBot(botResponse);
-               $("#message").val("");
+               // $("#message").val("");
                $("#chatarea").scrollTop($("#chatarea")[0].scrollHeight);
             }
          });
