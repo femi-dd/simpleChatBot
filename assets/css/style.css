@@ -1,13 +1,21 @@
 body {
    background: #DAE3E7;
    padding: 10px;
-   /* border: 25px solid; */
    font-family: 'Lato', arial, sans-serif;
    margin: 20px;
 }
-a{
+
+a {
    color: #434343;
 }
+
+#chatarea {
+   overflow: auto;
+   height:300px;
+   border:1px solid whitesmoke;
+   border-radius:5px;
+}
+
 #top {
    background-color: #DAE3E7;
    background: white;
@@ -15,13 +23,15 @@ a{
    margin: 20px;
    border-radius: 20px;
 }
+
 #intro{
    margin: 29px;
    display: block;
    font-size: 16px;
    padding: 20px;
 }
-h1{
+
+h1 {
    color: #434343;
    font-size: 38px;
    margin-bottom: 5px;
@@ -29,17 +39,19 @@ h1{
    padding-top: 10px;
    font-family: 'Montserrat', sans-serif;
 }
-h2{
+
+h2 {
    color: #778492;
    font-size: 26px
 }
+
 img {
    border-radius: 50%;
    float: left;
    width: 15%;
    margin: 15px;
 }
-li{
+li {
    padding-right: 25px;
    margin-right: 9px;
    list-style: none;
@@ -50,27 +62,49 @@ li{
    color: #fff;
    text-align: center;
 }
-.round-corners{
+
+.round-corners {
    border-radius: 20px;
-   /* background-color: #DAE3E7; */
+   background-color: #DAE3E7;
    background: white;
    margin: 20px;
 }
-.inner{
+
+.inner {
    padding: 20px;
 }
+
 #id{
-   border:2px black;
+   border: 2px black;
 }
-p,i,li{
-   font-family:'Lato', arial, sans-serif;
+
+p, i ,li {
+   font-family: 'Lato', arial, sans-serif;
 }
+
 #all_content{
-   padding-top:21px
+   padding-top: 21px;
 }
+
 .form-control2{
-   margin-bottom:20px;
+   margin-bottom: 20px;
 }
 .timeEl{
-   color:#495057;font-size:12px
+   color: #495057;font-size:12px
+}
+
+i {
+   font-size: 15px;
+}
+
+#footer {
+   text-align: center;
+   margin-bottom: 0;
+   padding-top: 25px;
+}
+
+@media-query {
+   body {
+      width: 100%;
+   }
 }

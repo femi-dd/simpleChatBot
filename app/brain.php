@@ -1,7 +1,7 @@
 <?php
 
-require "db.php";
-require "functions.php";
+require "./db/db.php";
+require "./functions.php";
 
 $dbObject = new DBConnection();
 $db_connection = $dbObject->getConnection();

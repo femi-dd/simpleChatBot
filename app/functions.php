@@ -5,7 +5,7 @@ function getTime() {
 }
 
 function developerName() {
-   return "Femi_DD";
+   return "Kole-Ibrahim AbdulQudus";
 }
 
 ?>
