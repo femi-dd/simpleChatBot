@@ -44,7 +44,7 @@ $(document).ready(chargeBot = () => {
          response = { 'response': 'Version 4.0' };
          newElementsForBot(response);
       } else {
-         fetch('http://localhost/Github/simpleChatBot/app/brain.php', {
+         fetch('http://localhost/simpleChatBot/app/brain.php', {
             method: 'post',
             body: { new_request: message },
             headers: { 'Content-Type': 'application/json' }
